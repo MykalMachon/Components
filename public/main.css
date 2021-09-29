@@ -1,0 +1,27 @@
+*{
+  box-sizing: border-box;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+body{
+  background: #F3F4F6;
+}
+
+.component__example{
+  background: white;
+  padding: 1.5em 1em 1em 1em;
+  border: 3px solid black;
+  position: relative;
+}
+
+.component__example::before{
+  position: absolute;
+  left: 1em; 
+  top: calc(-0.75em - 3px);
+  background: white;
+  padding:  0.1em 0.25em;
+  border: 3px solid black;
+  content: "Example";
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
