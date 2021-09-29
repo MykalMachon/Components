@@ -87,6 +87,7 @@
 	.select_options{
 		border-bottom-right-radius: 2px;
 		border-bottom-left-radius: 2px;
+    list-style: none;
 		border: 1px solid gray;
 		margin: 0px;
 		padding: 0px;
