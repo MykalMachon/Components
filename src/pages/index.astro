@@ -1,5 +1,5 @@
 ---
-import MultiSelect from '../components/MultiSelect.svelte';
+import Test from '../components/MultiSelect/Test.svelte';
 ---
 <html lang="en">
 
@@ -17,8 +17,8 @@ import MultiSelect from '../components/MultiSelect.svelte';
   <section class="component">
     <h2>Multiselect Component</h2>
     <p>Allows users to easily select more than one option via a dropdwon / search field</p>
-    <div class="component__example">
-      <MultiSelect id="test" name="test" label="MultiSelect Test" client:load />
+    <div id="root" class="component__example">
+      <Test client:load />
     </div>
   </section>
 </body>
