@@ -1,0 +1,44 @@
+---
+// data fetch the posts and create a navigation list
+const unsortedPages = Astro.fetchContent('../../pages/**/*.md');
+
+// create a map of all categories
+const categoryMap = unsortedPages.reduce((acc, curr) => {
+  const newMapping = {...acc};
+  const existingCateogry = acc[curr.category || 'misc'] || []
+  const newCateogry = [...existingCateogry, curr].sort()
+  newMapping[curr.category || 'misc'] = newCateogry
+  return newMapping;
+}, [])
+
+// create an array of all categories based on the map
+const categories = Object.keys(categoryMap).map((key) => {
+  return {title: key, pages: categoryMap[key]}
+}).sort((a, b) => a.title.localeCompare(b.title) )
+
+---
+
+<aside class="navbar--sidebar hidden-mobile" id="navigation">
+  <ul class="navbar__groups">
+    {categories.map((category) => 
+      <li class="navbar__group">
+        <h2>{category.title}</h2>
+        <ul>
+        {category.pages.map((page) => 
+          <li>
+            <a href={`${page.url || '/'}`}>{page.title}</a>
+          </li>
+        )}
+      </ul>
+      </li>
+    )}
+  </ul>
+</aside>
+<script>
+  // javascript for the menu
+  const navButtonEl = document.querySelector('button#nav-activate')
+  const navEl = document.querySelector('aside#navigation');
+  navButtonEl.addEventListener('click', () => {
+    navEl.classList.toggle('hidden-mobile');
+  })
+</script>

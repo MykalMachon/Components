@@ -1,0 +1,35 @@
+---
+import Navigation from './components/Navigation.astro'
+import Meta from './components/Meta.astro'
+
+const { content } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <Meta title={content.title} />
+</head>
+<body>
+  <div class="site-container">
+    <header class="header primary-container">
+      <p><a href="/">Mykal's Component Library</a></p>
+      <div class="header__items">
+        <button class="button button--subtle hidden-desktop" id="nav-activate">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+          </svg>
+        </button>
+      </div>
+    </header>
+    <div class="primary-container grid-two-col">
+      <Navigation />
+      <div>    
+        <main>
+          <slot />
+        </main>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

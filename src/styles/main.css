@@ -1,0 +1,192 @@
+/* 
+main.css:
+this file should have a bunch of re-usable styles, and should be able to copy-pasted with the components to make things work.
+*/
+
+:root {
+  /* using ink/paper allows for easy re-mapping via dark mode */
+  --ink: var(--gray-8);
+  --paper: var(--gray-1);
+
+  /* grid variables */
+  --three-col: 1fr 3fr 1fr;
+  --two-col: 1fr 3fr;
+}
+
+@media screen and (max-width: 1100px){
+  :root{
+    --three-col: 1fr;
+    --two-col: 1fr;
+  }
+}
+
+/* hard resets & normalize */
+* {
+  box-sizing: border-box;
+  margin: 0px;
+}
+
+/* BASIC PAGE SETTINGS */
+body {
+  background: var(--paper);
+  color: var(--ink);
+
+  font-family: var(--font-sans);
+}
+
+/* CONTAINERS & NAVIGATION */
+.site-container{
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.primary-container{ 
+  max-width: 1100px;
+  width: 100%;
+  padding: 0px var(--size-3);
+}
+
+.grid-two-col {
+  display: grid;
+  gap: var(--size-3);
+  grid-template-columns: var(--two-col);
+}
+
+.grid-three-col {
+  display: grid;
+  gap: var(--size-3);
+  grid-template-columns: var(--three-col);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: row;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.navbar--sidebar {
+  position: sticky;
+  max-height: 100vh;
+  width: 100%;
+  padding: var(--size-2) 0px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: var(--paper);
+}
+
+.navbar--sidebar ul {
+  padding: 0px;
+  list-style: none;
+}
+
+.navbar--sidebar .navbar__group {
+  margin: var(--size-3) 0px;
+}
+
+.navbar--sidebar .navbar__group h2 {
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.navbar--sidebar .navbar__group a, .navbar--sidebar .navbar__group h2 {
+  display: block;
+  padding: var(--size-1);
+}
+
+.navbar--sidebar .navbar__group a{
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.navbar--sidebar .navbar__group a:hover{
+  background: var(--gray-3);
+}
+
+@media screen and (max-width: 1100px){
+  .navbar--sidebar{
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 55px;
+  }
+}
+
+/* FORMS & INPUTS */
+
+/* TYPE SETTING */
+h1, h2, h3, h4 {
+  margin: var(--size-4) 0px;
+}
+
+p {
+  margin: var(--size-3) 0px;
+}
+
+blockquote {
+  padding: var(--size-1) var(--size-4);
+  background: var(--gray-3);
+  border-radius: var(--radius-2);
+}
+
+button.button, a.button {
+  padding: var(--size-2);
+  border: none;
+  display: flex;
+  flex-direction: row;
+  gap: var(--size-2);
+  align-items: center;
+  justify-content: center;
+  background: var(--indigo-8);
+  color: var(--gray-1);
+  border-radius: var(--radius-2);
+}
+
+button.button.button--subtle, a.button.button-subtle {
+  background: var(--paper);
+  color: var(--gray-8);
+  fill: var(--gray-8);
+}
+
+button.button.button--subtle:hover, a.button.button-subtle:hover,
+button.button.button--subtle:focus, a.button.button-subtle:focus {
+  background: var(--gray-3);
+  color: var(--gray-8);
+  fill: var(--gray-8);
+  cursor: pointer;
+}
+
+:is(button.button, a.button) svg {
+  fill: white;
+  width: 24px;
+  height: 24px;  
+}
+
+/* UTILITIES */
+
+.hidden {
+  visibility: hidden;
+}
+
+.hidden-mobile { 
+  visibility: visible;
+}
+
+.hidden-desktop {
+  visibility: hidden;
+}
+
+@media screen and (max-width: 1100px){
+  .hidden-mobile {
+    visibility: hidden;
+  }
+
+  .hidden-desktop{
+    visibility: visible;
+  }
+}
